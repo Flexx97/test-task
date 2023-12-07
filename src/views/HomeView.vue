@@ -2,7 +2,7 @@
 import axios from 'axios'
 import {computed, onBeforeMount, ref} from 'vue'
 import { useStepForm } from '@/stores/localStore.js'
-import {storeToRefs} from "pinia";
+import { storeToRefs } from 'pinia'
 
 const stepStore = useStepForm()
 const { step, typeForm } = storeToRefs(stepStore)
@@ -16,10 +16,6 @@ const typeInput = computed(() => {
   }
 })
 const inputValue = ref('')
-
-onBeforeMount(() => {
-  sendForm()
-})
 const sendForm = async function() {
   await axios.post('form', {
     step: step.value,
